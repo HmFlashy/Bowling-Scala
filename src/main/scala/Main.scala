@@ -9,6 +9,10 @@ object Main extends App {
 
   @tailrec
   def main(bowling: Bowling): Int = {
+
+    /**
+      * Display the score table
+      */
     println("Table: " + (0 to 9).map(index => {
 
       val frameOption = if(index < bowling.frames.size) bowling.frames.lift(bowling.frames.size - index - 1) else None
@@ -17,14 +21,17 @@ object Main extends App {
         case None => "| - - |"
       }
     }).mkString)
+
+    /**
+      * Display the current total score
+      */
     println("Current score: " + bowling.getScore())
+
     if(bowling.isOver())
       bowling.getScore()
     else{
 
       /**
-        *
-        *
         *
         * @return The number to roll
         */
